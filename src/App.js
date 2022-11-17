@@ -2,11 +2,11 @@ import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Deals from './Components/Deals';
+import Deals from './Pages/Deals';
 import Footer from './Components/Footer';
-import Home from './Components/Home';
+import Home from './Pages/Home';
 import ResponsiveAppBar from './Components/NavBar';
-import Store from './Components/Store';
+import Store from './Pages/Store';
 
 function App() {
 
