@@ -8,6 +8,7 @@ import Home from './Pages/Home';
 import ResponsiveAppBar from './Components/NavBar';
 import Store from './Pages/Store';
 import Platforms from './Pages/Platforms';
+import GameDetails from './Pages/GameDetails';
 
 function App() {
 
@@ -16,7 +17,9 @@ function App() {
       <ResponsiveAppBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/Store' element={<Store />} />
+        <Route path='/Store' element={<Store />} >
+        </Route>
+        <Route path='/gamed/:id' element={<GameDetails />} />
         <Route path='/Deals' element={<Deals />} />
         <Route path='/Platforms' element={<Platforms />} />
       </Routes>

@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from '../Components/SearchBar';
 import { useGamePlatforms } from '../Context/GamePlatformsContext';
 
 const Platforms = () => {
@@ -10,6 +11,7 @@ const Platforms = () => {
     } else { console.log(GamePlatforms) }
     return (
         <>
+
             <div id="blog" className="bg-gray-900 px-4 xl:px-0 py-12">
                 <div className="mx-auto container">
                     <h1 className="text-center text-3xl lg:text-5xl tracking-wider text-gray-100">Platforms</h1>
@@ -21,12 +23,12 @@ const Platforms = () => {
                                         <img className="w-full h-[300px] " src={platform.image_background} alt="games" />
                                         <div className="py-2 px-4 w-full flex justify-between bg-indigo-700">
                                             <p className="text-sm text-white font-semibold tracking-wide">{platform.name}&nbsp;</p>
-                                            <p className="text-sm text-white font-semibold tracking-wide">{platform.year_start?'Start year' : platform.year_start} </p>
+                                            <p className="text-sm text-white font-semibold tracking-wide">{platform.year_start ? 'Start year' : platform.year_start} </p>
                                             <p className="text-sm text-white font-semibold tracking-wide">{platform.year_start}</p>
                                         </div>
                                         <div className=" bg-gray-500 px-3  lg:px-6 py-4 rounded-bl-3xl rounded-br-3xl ">
                                             <h1 className="text-lg text-gray-200 font-semibold tracking-wider">Some Game:</h1>
-                                            <p className="text-gray-100 text-sm  lg:text-base  lg:leading-8 pr-4 tracking-wide mt-2">{platform.games.slice(0,3).map(name => <p style={{margin:0,padding:0}}>{name.name + ","}</p>)}</p>
+                                            <p className="text-gray-100 text-sm  lg:text-base  lg:leading-8 pr-4 tracking-wide mt-2">{platform.games.slice(0, 3).map(name => <p style={{ margin: 0, padding: 0 }}>{name.name + ","}</p>)}</p>
                                         </div>
                                     </div>
                                 )}
