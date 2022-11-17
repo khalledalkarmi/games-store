@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGame } from '../GameProvider'
+import { useGame } from '../Context/GameProvider'
 import GameCard from '../Components/Card'
 
 const Deals = () => {

@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { NavLink } from 'react-router-dom';
 
-const pages = ['Store', 'Deals', 'About', 'Contact'];
+const pages = ['Store', 'Deals', 'Platforms','About', 'Contact'];
 const settings = ['Logout'];
 
 function ResponsiveAppBar() {
@@ -130,6 +130,9 @@ function ResponsiveAppBar() {
                                 </NavLink>
                             </Button>
                         ))}
+                    
+                            
+              
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -159,6 +162,7 @@ function ResponsiveAppBar() {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
+
                         </Menu>
                     </Box>
                 </Toolbar>
