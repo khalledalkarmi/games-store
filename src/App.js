@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import ResponsiveAppBar from './Components/NavBar';
 import Store from './Pages/Store';
+import Platforms from './Pages/Platforms';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/Store' element={<Store />} />
         <Route path='/Deals' element={<Deals />} />
+        <Route path='/Platforms' element={<Platforms />} />
       </Routes>
       <Footer />
     </div>
