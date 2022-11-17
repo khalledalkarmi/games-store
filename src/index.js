@@ -5,7 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
-import { GameProvider } from './GameProvider';
+import { GameProvider } from './Context/GameProvider';
+import { PopularGamesProvider } from './Context/PopularGamesContext';
+import { UpcomingGamesProvider } from './Context/UpcomingGamesContext';
+import { NewGamesGetProvider } from './Context/NewGamesGetContext';
+import { GamePlatformsProvider } from './Context/GamePlatformsContext';
 // import AboutUs from './Components/AboutUs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,10 +17,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GameProvider>
-        <App />
-      </GameProvider>
-      {/* <AboutUs /> */}
+      <PopularGamesProvider>
+        <GameProvider>
+          <UpcomingGamesProvider>
+            <NewGamesGetProvider>
+              <GamePlatformsProvider>
+                <App />
+              </GamePlatformsProvider>
+            </NewGamesGetProvider>
+          </UpcomingGamesProvider>
+        </GameProvider>
+      </PopularGamesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
