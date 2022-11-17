@@ -5,24 +5,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function GameCard() {
+export default function GameCard({ game }) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345,marginTop:"0.8rem",marginBottom:"0.5rem",backgroundColor:'black' ,color:'white'} }  >
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
                     width="20"
-                    image="https://www.mmobomb.com/g/1136/thumbnail.jpg"
+                    image={game.thumbnail}
                     alt="green iguana"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        Lizard
+                        {game.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
+                    <Typography variant="body2" className='text-gray-300'>
+                        {game.short_description}
                     </Typography>
                 </CardContent>
             </CardActionArea>

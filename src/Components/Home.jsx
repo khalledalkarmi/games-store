@@ -1,18 +1,27 @@
-import React from 'react'
+import axios from 'axios'
+
+import React, { useContext, useEffect, useState } from 'react'
 import GameCard from './Card'
+import Hero from './Hero'
+import { useGame } from '../GameProvider'
 
 function Home() {
-    return (
-        <div>
-            <div className='flex justify-between'>
-                <GameCard />
-                <GameCard />
-                <GameCard />
-            </div>
+    const allGame = useGame()
 
-
-        </div>
-    )
+    if (allGame == null) {
+        return <h1>Loading</h1>
+    } else
+        return (
+            <>
+                <Hero />
+                <div className='flex justify-around my-10'>
+                    <GameCard game={allGame[0]} />
+                    <GameCard game={allGame[1]} />
+                    <GameCard game={allGame[2]} />
+                    <GameCard game={allGame[3]} />
+                </div>
+            </>
+        )
 }
 
 export default Home
