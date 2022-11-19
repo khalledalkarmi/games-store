@@ -1,4 +1,5 @@
 # Game-Store-Project-React
+[MockUp](https://github.com/khalledalkarmi/games-store/files/10047921/Untitled.2.pdf)
 
  
  [Trello link] (https://trello.com/b/AZ34kQCF/gamestore) 
