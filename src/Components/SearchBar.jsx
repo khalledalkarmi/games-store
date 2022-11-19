@@ -1,16 +1,16 @@
 import React from "react";
-import { makeStyles, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
-const SearchBar = ({ validateQGame }) => {
+const SearchBar = ({ searchHandle }) => {
     return (
         <TextField
             type="text"
             id="q_game"
             label="Search for a game"
             margin="normal"
-            variant="outlined"
-            style={{ width: '100%' }}
-            onKeyPress={e => validateQGame(e)}
+            style={{ width: '50%' }}
+            onChange={e => searchHandle(e.target.value)}
+            className='text-white bg-white opacity-90 rounded-xl'
         />
     );
 }

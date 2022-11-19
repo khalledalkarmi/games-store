@@ -12,9 +12,10 @@ const Platforms = () => {
     return (
         <>
 
-            <div id="blog" className="bg-gray-900 px-4 xl:px-0 py-12">
+            <div id="blog" className="bg-gray-900 px-4 xl:px-0 py-12" >
+                <h1 className="text-center text-3xl lg:text-5xl tracking-wider absolute top-[20rem] right-[38rem] shadow-2xl bg-black bg-opacity-50 p-3 text-gray-100">Platforms</h1>
+                <img src='https://media.rawg.io/media/games/d9e/d9e868382c48ec98c9b23b8fbe6a2045.jpg' className='h-[35rem] w-full mb-10 p-0' />
                 <div className="mx-auto container">
-                    <h1 className="text-center text-3xl lg:text-5xl tracking-wider text-gray-100">Platforms</h1>
                     <div className="mt-12">
                         <div>
                             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">

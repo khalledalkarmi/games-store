@@ -12,14 +12,18 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useIsAuthenticated, useSignOut } from 'react-auth-kit';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
-const pages = ['Store', 'Deals', 'Platforms','About', 'Contact'];
-const settings = ['Logout'];
+const pages = ['Store', 'Deals', 'Platforms', 'About', 'Contact'];
+const settings = ['Signup', 'Login'];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const isAuth = useIsAuthenticated()
+    const signOut = useSignOut()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -37,10 +41,10 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar className='bg-black' position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                <SportsEsportsIcon/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -98,7 +102,7 @@ function ResponsiveAppBar() {
 
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                   
                     <Typography
                         variant="h5"
                         noWrap
@@ -130,9 +134,6 @@ function ResponsiveAppBar() {
                                 </NavLink>
                             </Button>
                         ))}
-                    
-                            
-              
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -157,12 +158,19 @@ function ResponsiveAppBar() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                            {isAuth() ? (
+                                <MenuItem key={'Logout'} onClick={e => { handleCloseUserMenu(); signOut() }}>
+                                    <Typography textAlign="center" onClick={e => { }}>Logout</Typography>
+                                </MenuItem>) : (
 
+                                settings.map((setting) => (
+                                    <MenuItem key={setting} onClick={e => { handleCloseUserMenu() }}>
+                                        <Link className='no-underline' to={setting}>
+                                            <Typography textAlign="center">{setting}</Typography>
+                                        </Link>
+                                    </MenuItem>
+                                )
+                                ))}
                         </Menu>
                     </Box>
                 </Toolbar>

@@ -9,21 +9,32 @@ import ResponsiveAppBar from './Components/NavBar';
 import Store from './Pages/Store';
 import Platforms from './Pages/Platforms';
 import GameDetails from './Pages/GameDetails';
+import SignIn from './Pages/Login';
+import SignUp from './Pages/Signup';
+import { AuthProvider } from 'react-auth-kit'
+import Contact from './Pages/Contant';
+
 
 function App() {
 
   return (
     <div >
-      <ResponsiveAppBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Store' element={<Store />} >
-        </Route>
-        <Route path='/gamed/:id' element={<GameDetails />} />
-        <Route path='/Deals' element={<Deals />} />
-        <Route path='/Platforms' element={<Platforms />} />
-      </Routes>
-      <Footer />
+      <AuthProvider authType={'cookie'}
+        authName={'_auth'}>
+        <ResponsiveAppBar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Store' element={<Store />} >
+          </Route>
+          <Route path='/gamed/:id' element={<GameDetails />} />
+          <Route path='/Deals' element={<Deals />} />
+          <Route path='/Platforms' element={<Platforms />} />
+          <Route path='/Login' element={<SignIn />} />
+          <Route path='/Signup' element={<SignUp />} />
+          <Route path='/Contact' element={<Contact />} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </div>
   );
 }

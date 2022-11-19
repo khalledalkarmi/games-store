@@ -25,6 +25,11 @@ const Store = () => {
         }
     }, [currentPage])
 
+    function searchHandle(value) {
+        let results = allGames.filter(m => m.title.toLowerCase().includes(value))
+        setGameSlice(results)
+    }
+
     if (allGames == null) {
         return <ProgressBar />
     } else {
@@ -32,7 +37,8 @@ const Store = () => {
             <>
 
                 <div id="blog" className="bg-gray-900 px-4 xl:px-0 py-12">
-                    <SearchBar />
+                    <div className='flex justify-center'><SearchBar searchHandle={searchHandle} /></div>
+
                     <div className="mx-auto container">
                         <h1 className="text-center text-3xl lg:text-5xl tracking-wider text-gray-200">Store</h1>
                         <div className="mt-12">

@@ -3,7 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Button } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
+
 const CardGameRow = ({ game }) => {
+    const navigate = useNavigate()
+    function handleNavigate(id){
+        navigate(`gamed/${id}`)
+    }
     console.log(game);
     return (
         <div className="text-gray-100">
@@ -16,9 +23,9 @@ const CardGameRow = ({ game }) => {
                     height="140"
                     image={game.background_image}
                     alt="green iguana"
-                    sx={{ height: '300px'}}
+                    sx={{ height: '300px' }}
                 />
-                <CardContent sx={{ height: '220px'}}>
+                <CardContent sx={{ height: '220px' }}>
                     <Typography gutterBottom variant="h5" component="div" sx={{
                         '--tw-bg-opacity': 1,
                         color: 'rgb(243 244 246 / var(--tw-bg-opacity))'
@@ -46,16 +53,23 @@ const CardGameRow = ({ game }) => {
                     <Typography variant="body2" sx={{
                         '--tw-bg-opacity': 1,
                         color: 'rgb(243 244 246 / var(--tw-bg-opacity))',
-               
+
                     }}>
                         {game.platforms.map(p => p.platform.name + " ")}
                     </Typography>
-                    <Typography variant="body2" sx={{
-                        '--tw-bg-opacity': 1,
-                        color: 'rgb(243 244 246 / var(--tw-bg-opacity))'
-                    }}>
-                        {game.platforms.map(p => p.platform.id + " ")}
-                    </Typography>
+                    <div className='flex justify-between mt-1'>
+                        <span className='mt-2'>
+                            <Typography variant="body2" sx={{
+                                '--tw-bg-opacity': 1,
+                                color: 'rgb(243 244 246 / var(--tw-bg-opacity))'
+                            }}>
+
+                                {game.platforms.map(p => p.platform.id + " ")}
+                            </Typography>
+                        </span>
+                        <Button outline={false} onClick={e=>handleNavigate(game.id)}
+                            gradientDuoTone="cyanToBlue" className='text-black hover:text-cyan-600'>More Details</Button>
+                    </div>
                 </CardContent>
             </Card>
         </div>

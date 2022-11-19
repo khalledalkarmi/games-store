@@ -1,5 +1,6 @@
 //Base URL
 const base_url = "https://api.rawg.io/api/";
+const base_deal_url = "https://www.cheapshark.com/api/";
 
 //API key
 const apiKey = '10b00254796d41b6b0c3418b345aed6e'
@@ -65,6 +66,8 @@ const game_platforms = `platforms`
 const game_publishers = `publishers?key=${apiKey}&page_size=50`
 const game_publishers_no_page = `publishers`
 
+// all Store 
+
 //Routes
 export const popularGamesGet = () => `${ base_url }${ popular_games }`;
 export const upcomingGamesGet = () => `${ base_url }${ upcoming_games }`;
@@ -81,5 +84,6 @@ export const samplePlatformGamesGet = platform_id => `${ base_url }${ platform_g
 export const publishersGet = () => `${ base_url }${ game_publishers }`;
 export const specificPublisherGet = publisher_id => `${ base_url }${ game_publishers_no_page }/${ publisher_id }?key=${ apiKey }`;
 export const samplePublisherGamesGet = publisher_id => `${ base_url }${ publisher_games }${publisher_id}&page_size=21`;
+export const getAllStore = publisher_id => `${ base_url }${ publisher_games }${publisher_id}&page_size=21`;
 
 
