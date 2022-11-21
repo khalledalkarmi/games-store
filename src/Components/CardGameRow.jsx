@@ -13,7 +13,7 @@ const CardGameRow = ({ game }) => {
     }
     console.log(game);
     return (
-        <div className="text-gray-100">
+        <div className="text-gray-100 ">
             <Card sx={{
                 maxWidth: 345, '--tw-bg-opacity': 1,
                 backgroundColor: 'rgb(107 114 128 / var(--tw-bg-opacity))'

@@ -9,7 +9,7 @@ function Contact() {
                 </div>
                 <div className="w-full flex items-center justify-center  ">
                     <div className="absolute w-1/2 top-40 bg-gray-200 shadow rounded py-12 lg:px-28 px-8 opacity-90 ">
-                        <p className="md:text-3xl text-xl font-bold leading-7 text-center text-gray-700">Let’s chat and get a quote!</p>
+                        <p className="md:text-3xl text-xl font-bold leading-7 text-center text-gray-700">Let’s chat</p>
                         <div className="md:flex items-center mt-12">
                             <div className="md:w-72 flex flex-col">
                                 <label className="text-base font-semibold leading-none text-gray-800">Name</label>

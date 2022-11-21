@@ -11,11 +11,14 @@ import { UpcomingGamesProvider } from './Context/UpcomingGamesContext';
 import { NewGamesGetProvider } from './Context/NewGamesGetContext';
 import { GamePlatformsProvider } from './Context/GamePlatformsContext';
 // import AboutUs from './Components/AboutUs';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
+
     <BrowserRouter>
       <PopularGamesProvider>
         <GameProvider>

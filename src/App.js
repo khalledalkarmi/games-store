@@ -13,10 +13,19 @@ import SignIn from './Pages/Login';
 import SignUp from './Pages/Signup';
 import { AuthProvider } from 'react-auth-kit'
 import Contact from './Pages/Contant';
-
+import { gapi } from 'gapi-script';
+const clientId =  '76710521547-nbakpmr8qmrvj6gt2rhu7nhd75dg6ahr.apps.googleusercontent.com'
 
 function App() {
-
+  useEffect(()=>{
+    function start(params) {
+      gapi.client.init({
+        clientId: clientId,
+        scope:''
+      })
+    }
+    gapi.load('client:auth2',start)
+  })
   return (
     <div >
       <AuthProvider authType={'cookie'}

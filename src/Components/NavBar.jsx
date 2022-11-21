@@ -16,7 +16,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useIsAuthenticated, useSignOut } from 'react-auth-kit';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
-const pages = ['Store', 'Deals', 'Platforms', 'About', 'Contact'];
+const pages = ['Store', 'Deals', 'Platforms', 'Contact'];
 const settings = ['Signup', 'Login'];
 
 function ResponsiveAppBar() {

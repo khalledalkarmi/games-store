@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSignIn } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login'
+const clientId = '76710521547-nbakpmr8qmrvj6gt2rhu7nhd75dg6ahr.apps.googleusercontent.com'
 
 function Copyright(props) {
     return (
@@ -124,6 +126,17 @@ export default function SignIn() {
                                 Sign In
                             </Button>
                             <Grid container>
+                                <Grid item sx={{width:'50%'}}>
+                                    <GoogleLogin
+                                        clientId={clientId}
+                                        onSuccess={credentialResponse => {
+                                            console.log(credentialResponse);
+                                        }}
+                                        onError={() => {
+                                            console.log('Login Failed');
+                                        }}
+                                    />
+                                </Grid>
                                 <Grid item xs>
                                     <Link href="#" variant="body2">
                                         Forgot password?

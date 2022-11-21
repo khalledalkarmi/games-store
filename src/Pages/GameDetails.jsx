@@ -1,26 +1,43 @@
-import { Grid } from '@mui/material'
+import { Grid, Link } from '@mui/material'
 import { Container } from '@mui/system'
 import axios from 'axios'
+import { Button, Card, Spinner } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { gameDetailsGet } from '../API'
 import SearchBar from '../Components/SearchBar'
+import {HiShoppingCart } from 'react-icons/hi'
 
 const GameDetails = () => {
     const [game, setGame] = useState()
+    const [gameDeals, setGameDeals] = useState()
 
+    function getDeals(name) {
+        axios.get(`https://www.cheapshark.com/api/1.0/games?title=${name.replace(' ', '%20')}&limit=60`)
+            .then(res => {
+                console.log(res.data);
+                setGameDeals(res.data)
+            })
+            .catch(res => { })
+    }
 
     useEffect(() => {
         axios.get(gameDetailsGet(param.id)).then(
             (res) => {
                 setGame(res.data)
                 console.log(res.data);
+                getDeals(res.data.name)
             }
         ).catch(e => console.log(e))
     }, [])
     const param = useParams()
-    if (game == null) {
-        return <h1>loading</h1>
+    if (game == null || gameDeals == null) {
+
+        return (
+            <div className="text-center min-h-screen">
+                <Spinner size='2xl' className=' text-xl w-1/3 mt-20' aria-label="Center-aligned spinner example" />
+            </div>
+        )
     }
     return (
         <div className=" text-white bg-gray-900">
@@ -30,9 +47,30 @@ const GameDetails = () => {
             <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4">
                 <div className="w-2/3">
                     <img className="mt-6 w-full" alt="img of a girl posing" src={game.background_image_additional} />
+                    <div className='grid lg:grid-cols-3 gap-4 p-4 md:grid-cols-1'>
+                        {gameDeals.map(e => {
+                            console.log(e)
+                            return (
+
+                                <div class="max-w-sm p-6 bg-gray-300 bg-opacity-60 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                    <h6 className='text-gray-900'>{game.name}</h6>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 ">{e.external}</p>
+                                    <p class="mb-3  text-2xl font-normal text-gray-800 dark:text-gray-400 ">{e.cheapest} $</p>
+                                    <a className='' href={'https://www.cheapshark.com/redirect?dealID=' + e.cheapestDealID} >
+                                        <Button gradientDuoTone="cyanToBlue">
+                                        <HiShoppingCart className="mr-2 h-5 w-5" />
+                                            Buy Now
+                                        </Button>
+                                    </a>
+                                </div>
+
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className="md:hidden">
                     <img className="w-full" alt="img of a girl posing" src="https://i.ibb.co/QMdWfzX/component-image-one.png" />
+
                 </div>
                 <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
                     <div className="border-b border-gray-200 pb-6">

@@ -4,6 +4,7 @@ import { useGame } from '../Context/GameProvider'
 import GameCard from '../Components/Card'
 import ProgressBar from '../Components/ProgressBar/ProgressBar.component'
 import SearchBar from '../Components/SearchBar'
+import { Spinner } from 'flowbite-react'
 
 const Store = () => {
     const allGames = useGame()
@@ -31,7 +32,12 @@ const Store = () => {
     }
 
     if (allGames == null) {
-        return <ProgressBar />
+
+        return (
+            <div className="text-center min-h-screen">
+                <Spinner size='2xl' className=' text-xl w-1/3 mt-20' aria-label="Center-aligned spinner example" />
+            </div>
+        )
     } else {
         return (
             <>
@@ -53,8 +59,8 @@ const Store = () => {
                         </div>
                     </div>
                 </div>
-                <div className='flex justify-center w-full my-5'>
-                    <Pagination count={Math.floor(allGames.length / 12)} color="secondary" onChange={(e, page) => handlePagination(page)} />
+                <div className='flex justify-center w-full bg-gray-400 text-white '>
+                    <Pagination color='white' variant='light' className='text-white' count={Math.floor(allGames.length / 12)} onChange={(e, page) => handlePagination(page)} />
                 </div>
             </>
         )

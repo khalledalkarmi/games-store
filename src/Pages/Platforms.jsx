@@ -1,3 +1,4 @@
+import { Spinner } from 'flowbite-react';
 import React from 'react'
 import SearchBar from '../Components/SearchBar';
 import { useGamePlatforms } from '../Context/GamePlatformsContext';
@@ -7,7 +8,11 @@ const Platforms = () => {
     const GamePlatforms = useGamePlatforms()
 
     if (GamePlatforms == null) {
-        return <h1>loading</h1>
+        return (
+            <div className="text-center min-h-screen">
+            <Spinner size='2xl' className=' text-xl w-1/3 mt-20' aria-label="Center-aligned spinner example" />
+            </div>
+        )
     } else { console.log(GamePlatforms) }
     return (
         <>
