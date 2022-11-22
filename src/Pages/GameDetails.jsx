@@ -1,11 +1,8 @@
-import { Grid, Link } from '@mui/material'
-import { Container } from '@mui/system'
 import axios from 'axios'
-import { Button, Card, Spinner } from 'flowbite-react'
+import { Button, Spinner } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { gameDetailsGet } from '../API'
-import SearchBar from '../Components/SearchBar'
 import {HiShoppingCart } from 'react-icons/hi'
 
 const GameDetails = () => {
@@ -29,6 +26,7 @@ const GameDetails = () => {
                 getDeals(res.data.name)
             }
         ).catch(e => console.log(e))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const param = useParams()
     if (game == null || gameDeals == null) {

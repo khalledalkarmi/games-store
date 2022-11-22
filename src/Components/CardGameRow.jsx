@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CardGameRow = ({ game }) => {
     const navigate = useNavigate()
-    function handleNavigate(id){
+    function handleNavigate(id) {
         navigate(`gamed/${id}`)
     }
     console.log(game);
@@ -64,10 +64,9 @@ const CardGameRow = ({ game }) => {
                                 color: 'rgb(243 244 246 / var(--tw-bg-opacity))'
                             }}>
 
-                                {game.platforms.map(p => p.platform.id + " ")}
                             </Typography>
                         </span>
-                        <Button outline={false} onClick={e=>handleNavigate(game.id)}
+                        <Button outline={false} onClick={e => handleNavigate(game.id)}
                             gradientDuoTone="cyanToBlue" className='text-black hover:text-cyan-600'>More Details</Button>
                     </div>
                 </CardContent>
@@ -75,5 +74,11 @@ const CardGameRow = ({ game }) => {
         </div>
     )
 }
+/*
+PC PlayStation 5 Xbox One PlayStation 4 Xbox Series S/X
+
+4 187 1 18 186
+*/
+
 
 export default CardGameRow

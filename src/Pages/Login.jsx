@@ -126,11 +126,20 @@ export default function SignIn() {
                                 Sign In
                             </Button>
                             <Grid container>
-                                <Grid item sx={{width:'50%'}}>
+                                <Grid item sx={{ width: '50%' }}>
                                     <GoogleLogin
                                         clientId={clientId}
                                         onSuccess={credentialResponse => {
                                             console.log(credentialResponse);
+                                            if (Login({
+                                                token: credentialResponse.accessToken,
+                                                expiresIn: 60,
+                                                tokenType: "Bearer",
+                                                authState: credentialResponse.profileObj
+                                            })) {
+
+                                                navigate('/')
+                                            }
                                         }}
                                         onError={() => {
                                             console.log('Login Failed');

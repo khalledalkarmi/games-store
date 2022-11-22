@@ -2,7 +2,6 @@ import { Pagination } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useGame } from '../Context/GameProvider'
 import GameCard from '../Components/Card'
-import ProgressBar from '../Components/ProgressBar/ProgressBar.component'
 import SearchBar from '../Components/SearchBar'
 import { Spinner } from 'flowbite-react'
 
@@ -24,6 +23,7 @@ const Store = () => {
             setGameSlice(allGames.slice(indexOfFirstPost, indexOfLastPost))
             console.log(gameSlice);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage])
 
     function searchHandle(value) {
