@@ -12,7 +12,7 @@ const GameDetails = () => {
     function getDeals(name) {
         axios.get(`https://www.cheapshark.com/api/1.0/games?title=${name.replace(' ', '%20')}&limit=60`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setGameDeals(res.data)
             })
             .catch(res => { })
@@ -47,7 +47,7 @@ const GameDetails = () => {
                     <img className="mt-6 w-full" alt="img of a girl posing" src={game.background_image_additional} />
                     <div className='grid lg:grid-cols-3 gap-4 p-4 md:grid-cols-1'>
                         {gameDeals.map(e => {
-                            console.log(e)
+                            {/* console.log(e) */}
                             return (
 
                                 <div class="max-w-sm p-6 bg-gray-300 bg-opacity-60 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">

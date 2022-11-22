@@ -16,13 +16,13 @@ const Deals = () => {
     const [steamGame, setSteamGame] = useState()
     const [goGGame, setGog] = useState()
     const [epicGame, setEpicGame] = useState()
-    const [price, setPrice] = useState('30')
+    const [price, setPrice] = useState('10')
     const [searchGameDeals, setSearchGameDeals] = useState(null)
 
     const handleDealsSearch = (e) => {
-        console.log(e);
+        // console.log(e);
         axios.get(`https://www.cheapshark.com/api/1.0/games?title=${e.value}&limit=60`).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             setSearchGameDeals(res.data)
         }).catch(res => {
             console.log(res);
@@ -79,14 +79,14 @@ const Deals = () => {
         axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=1&lowerPrice=${price}&storeBy=price`)
             .then(res => {
                 setSteamGame(res.data)
-                console.log(res.data);
+                // console.log(res.data);
             }).catch(res => console.log(res))
     }
     const getEpicGame = (price) => {
         axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=25&lowerPrice=${price}&storeBy=price`)
             .then(res => {
                 setEpicGame(res.data)
-                console.log(res.data);
+                // console.log(res.data);
             }).catch(res => console.log(res))
     }
 
@@ -94,12 +94,12 @@ const Deals = () => {
         axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=7&lowerPrice=${price}&storeBy=price`)
             .then(res => {
                 setGog(res.data)
-                console.log(res.data);
+                // console.log(res.data);
             }).catch(res => console.log(res))
     }
     function onClick(value) {
         let v = value.replace('$', '')
-        console.log(v);
+        // console.log(v);
         setPrice(v)
     }
 
@@ -161,7 +161,7 @@ const Deals = () => {
                     <Slider {...settings} className='text-white'>
 
                         {searchGameDeals?.map(game => {
-                            console.log(game)
+                            {/* console.log(game) */}
                             return (
 
                                 <div className=" relative ">

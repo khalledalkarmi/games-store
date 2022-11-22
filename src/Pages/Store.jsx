@@ -4,32 +4,41 @@ import { useGame } from '../Context/GameProvider'
 import GameCard from '../Components/Card'
 import SearchBar from '../Components/SearchBar'
 import { Spinner } from 'flowbite-react'
+import axios from 'axios'
+import CardGameRow from '../Components/CardGameRow'
 
 const Store = () => {
-    const allGames = useGame()
-    const [currentPage, setCurrentPage] = useState(1);
-    const [gameSlice, setGameSlice] = useState([]);
+    const [allGames,setAllGames]=useState()
+    const [page,setPage]=useState(1)
     const handlePagination = (page) => {
-        console.log(page);
-        setCurrentPage(page);
+       setPage(page)
+        // setCurrentPage(page);
     }
-    const indexOfLastPost = currentPage * 12;
+
+    useEffect(()=>{
+        axios.get(`https://api.rawg.io/api/games?key=10b00254796d41b6b0c3418b345aed6e&page=${page}`)
+        .then(res=>{
+            setAllGames(res.data.results);
+            // console.log(res.data.results);
+        })
+    },[page])
+    // const indexOfLastPost = currentPage * 12;
 
     //                         10              10
-    const indexOfFirstPost = indexOfLastPost - 12;
-    useEffect(() => {
-        if (allGames != null) {
-            setGameSlice([])
-            setGameSlice(allGames.slice(indexOfFirstPost, indexOfLastPost))
-            console.log(gameSlice);
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage])
+    // const indexOfFirstPost = indexOfLastPost - 12;
+    // useEffect(() => {
+    //     if (allGames != null) {
+    //         setGameSlice([])
+    //         setGameSlice(allGames.slice(indexOfFirstPost, indexOfLastPost))
+    //         console.log(gameSlice);
+    //     }
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [currentPage])
 
-    function searchHandle(value) {
-        let results = allGames.filter(m => m.title.toLowerCase().includes(value))
-        setGameSlice(results)
-    }
+    // function searchHandle(value) {
+    //     let results = allGames.filter(m => m.title.toLowerCase().includes(value))
+    //     setGameSlice(results)
+    // }
 
     if (allGames == null) {
 
@@ -43,7 +52,7 @@ const Store = () => {
             <>
 
                 <div id="blog" className="bg-gray-900 px-4 xl:px-0 py-12">
-                    <div className='flex justify-center'><SearchBar searchHandle={searchHandle} /></div>
+                    {/* <div className='flex justify-center'><SearchBar searchHandle={searchHandle} /></div> */}
 
                     <div className="mx-auto container">
                         <h1 className="text-center text-3xl lg:text-5xl tracking-wider text-gray-200">Store</h1>
@@ -51,8 +60,8 @@ const Store = () => {
 
                             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
                                 {
-                                    gameSlice.map(game => {
-                                        return <GameCard game={game} key={game.id} />
+                                    allGames?.map(game => {
+                                        return <CardGameRow game={game} />
                                     })
                                 }
                             </div>
@@ -60,7 +69,7 @@ const Store = () => {
                     </div>
                 </div>
                 <div className='flex justify-center w-full bg-gray-400 text-white '>
-                    <Pagination color='white' variant='light' className='text-white' count={Math.floor(allGames.length / 12)} onChange={(e, page) => handlePagination(page)} />
+                    <Pagination color='white' variant='light' className='text-white' count={20} onChange={(e, page) => handlePagination(page)} />
                 </div>
             </>
         )

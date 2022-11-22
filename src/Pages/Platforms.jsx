@@ -13,7 +13,7 @@ const Platforms = () => {
             <Spinner size='2xl' className=' text-xl w-1/3 mt-20' aria-label="Center-aligned spinner example" />
             </div>
         )
-    } else { console.log(GamePlatforms) }
+    } 
     return (
         <>
 

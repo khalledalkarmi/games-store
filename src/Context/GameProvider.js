@@ -17,7 +17,7 @@ export const GameProvider = ({ children }) => {
     };
 
     axios.request(options).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       setAllGames(response.data)
     }).catch(function (error) {
       console.error(error);

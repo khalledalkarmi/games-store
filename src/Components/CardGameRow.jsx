@@ -11,7 +11,7 @@ const CardGameRow = ({ game }) => {
     function handleNavigate(id) {
         navigate(`gamed/${id}`)
     }
-    console.log(game);
+    // console.log(game);
     return (
         <div className="text-gray-100 ">
             <Card sx={{
